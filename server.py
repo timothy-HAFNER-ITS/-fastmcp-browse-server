@@ -2,9 +2,9 @@ from fastapi import FastAPI, Request
 from modules.browse import browse_url
 import uvicorn
 
-app = FastAPI()
+server = FastAPI()  # <-- renamed from 'app' to 'server'
 
-@app.post("/command/browse")
+@server.post("/command/browse")
 async def browse_command(request: Request):
     """
     Expects JSON: {"url": "...", "keyword": "..."} (keyword optional)
@@ -19,4 +19,4 @@ async def browse_command(request: Request):
     return result
 
 if __name__ == "__main__":
-    uvicorn.run("server:app", host="0.0.0.0", port=8000)
+    uvicorn.run("server:server", host="0.0.0.0", port=8000)
